@@ -1,0 +1,26 @@
+version: "2"
+servers:
+  - engine: "postgresql"
+    uri: "postgresql://dev:dev@postgres:5432/postgres?sslmode=disable"
+sql:
+  - engine: "postgresql"
+    database:
+      managed: true
+    schema: "migrations"
+    queries: "queries"
+    gen:
+      go:
+        sql_package: "pgx/v5"
+        out: ../internal/db
+        emit_json_tags: true
+        emit_prepared_queries: true
+        emit_interface: true
+        emit_empty_slices: true
+        emit_pointers_for_null_types: true
+        emit_result_struct_pointers: true
+        emit_enum_valid_method: true
+        emit_all_enum_values: true
+        json_tags_case_style: "snake"
+        overrides:
+          - db_type: "uuid"
+            go_type: "github.com/google/uuid.UUID"
