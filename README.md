@@ -14,7 +14,7 @@ and provides a simple web interface to view the collected urls
   
 * Generate the go types
     ```sh
-    make t
+    make types
     ```
   
 * Run the migrations
